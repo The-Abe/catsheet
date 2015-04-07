@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'catsheet'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2015-04-06'
   s.summary     = "A cat-like tool for spreadsheets."
   s.description = "A simple gem that prints spreadsheets like cat prints text files."

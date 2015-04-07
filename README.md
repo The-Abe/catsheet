@@ -20,3 +20,7 @@ parameter, as follows.
     catsheet spreadsheet.xls 2
 
 Worksheets are numbered starting at one.
+
+# Todo
+
+* Support multibyte strings in determining the length of cells.

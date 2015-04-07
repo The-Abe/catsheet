@@ -4,6 +4,7 @@
 # Date: 2015-04-06
 # File: catsheet.rb
 
+require 'rubygems'
 # Require the spreadsheet gem and check for success.
 begin
   require 'spreadsheet'
@@ -20,7 +21,7 @@ end
 
 # Open the spreadsheet supplied in the arguments
 begin
-  book = Spreadsheet.open ARGV[0]
+  book = Spreadsheet.open(ARGV[0],'r')
 rescue Ole::Storage::FormatError
   puts "The file you wanted to open seems to be invalid."
   exit 1
