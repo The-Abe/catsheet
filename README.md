@@ -23,4 +23,4 @@ Worksheets are numbered starting at one.
 
 # Todo
 
-* Support multibyte strings in determining the length of cells.
+* ~~Support multibyte strings in determining the length of cells.~~

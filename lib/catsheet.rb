@@ -1,7 +1,7 @@
 # Author: Abe van der Wielen
 # Email: abevanderwielen@gmail.com
 # Website: https://github.com/the-abe
-# Date: 2015-04-06
+# Date: 2015-04-16
 # File: catsheet.rb
 
 require 'rubygems'
@@ -11,6 +11,11 @@ begin
 rescue LoadError
   puts "Could not load the spreadsheet gem. Please run \"gem install spreadsheet\"."
   exit 1
+end
+
+# Return the length of the string, taking multibyte characters into account.
+def string_length(string)
+  return string.scan(/./mu).size
 end
 
 # Check if the name of a spreadsheet was supplied.
@@ -44,9 +49,9 @@ sheet.each do |row|
   column_counter = row.length-1 if row.length-1 > column_counter
   row.each_with_index do |cell,index|
     row.format 2
-    if width_array[index].nil? || width_array[index] < cell.to_s.length
+    if width_array[index].nil? || width_array[index] < string_length(cell.to_s)
       cell = " " if cell.nil?
-      width_array[index] = cell.to_s.length
+      width_array[index] = string_length(cell.to_s)
     end
   end
 end
@@ -62,8 +67,13 @@ sheet.each do |row|
     # Get the maximum length from the array and add spaces to make the cell as
     # long as the rest.
     length = width_array[index]
-    filler = length - cell.to_s.length
-    row_array << "#{' '*filler}#{cell}"
+    filler = length - string_length(cell.to_s)
+    #Cells without digits are left aligned number cells are right aligned
+    if cell =~ /[^\d\.]+/
+      row_array << "#{cell}#{' '*filler}"
+    else
+      row_array << "#{' '*filler}#{cell}"
+    end
   end
   # Loop through it all and fill empty cells at the end of the row.
   result_columns = (0..column_counter).map do |index|
