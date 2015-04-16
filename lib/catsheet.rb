@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Author: Abe van der Wielen
 # Email: abevanderwielen@gmail.com
 # Website: https://github.com/the-abe
