@@ -16,6 +16,15 @@ module Catsheet
       exit 1
     end
 
+    private
+
+    # Return the length of the string, taking multibyte characters into account.
+    def self.string_length(string)
+      return string.scan(/./mu).size
+    end
+
+    public
+
     def self.main
       # Check if the name of a spreadsheet was supplied.
       if ARGV[0].nil?
@@ -87,13 +96,5 @@ module Catsheet
         puts result
       end
     end
-
-    private
-
-    # Return the length of the string, taking multibyte characters into account.
-    def string_length(string)
-      return string.scan(/./mu).size
-    end
-
   end
 end
